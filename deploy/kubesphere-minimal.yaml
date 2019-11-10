@@ -10592,12 +10592,7 @@ spec:
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  creationTimestamp: "2019-11-09T10:41:41Z"
-  generation: 2
   name: prometheusrules.monitoring.coreos.com
-  resourceVersion: "1897"
-  selfLink: /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/prometheusrules.monitoring.coreos.com
-  uid: 003f4082-8701-4dc6-82e3-a4eaed585757
 spec:
   conversion:
     strategy: None
