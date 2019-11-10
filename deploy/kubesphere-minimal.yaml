@@ -1,4 +1,5 @@
 # Namespaces
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -19,7 +20,7 @@ metadata:
   labels:
     kubesphere.io/workspace: system-workspace
   name: kubesphere-system
-
+---
 # Configmaps
 ---
 apiVersion: v1
@@ -2826,10 +2827,8 @@ metadata:
   name: user-init
 ---
 
-
-
-
 # Clusterroles
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -3240,7 +3239,7 @@ rules:
   - ingresses/status
   verbs:
   - update
-
+---
 # Serviceaccounts
 ---
 apiVersion: v1
@@ -3289,7 +3288,7 @@ kind: ServiceAccount
 metadata:
   name: prometheus-operator
   namespace: kubesphere-monitoring-system
-
+---
 # Roles
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -3394,7 +3393,6 @@ rules:
   verbs:
   - get
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -16033,7 +16031,7 @@ spec:
         runAsUser: 65534
       serviceAccount: kube-state-metrics
       serviceAccountName: kube-state-metrics
-----
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16142,9 +16140,9 @@ spec:
           requests:
             cpu: 10m
             memory: 20Mi
-
+---
 # Statefulsets
-
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
