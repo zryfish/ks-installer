@@ -13,7 +13,6 @@ spec:
     listKind: AlertmanagerList
     plural: alertmanagers
     singular: alertmanager
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -2540,7 +2539,6 @@ spec:
     listKind: ApplicationList
     plural: applications
     singular: application
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -2797,7 +2795,6 @@ spec:
     shortNames:
     - bdc
     singular: blockdeviceclaim
-  preserveUnknownFields: true
   scope: Namespaced
   version: v1alpha1
   versions:
@@ -2838,7 +2835,6 @@ spec:
     shortNames:
     - bd
     singular: blockdevice
-  preserveUnknownFields: true
   scope: Namespaced
   version: v1alpha1
   versions:
@@ -2866,7 +2862,6 @@ spec:
     listKind: DestinationRuleList
     plural: destinationrules
     singular: destinationrule
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -3647,7 +3642,6 @@ spec:
     shortNames:
     - disk
     singular: disk
-  preserveUnknownFields: true
   scope: Cluster
   version: v1alpha1
   versions:
@@ -3678,7 +3672,6 @@ spec:
     listKind: FluentBitList
     plural: fluentbits
     singular: fluentbit
-  preserveUnknownFields: true
   scope: Namespaced
   version: v1alpha1
   versions:
@@ -3704,7 +3697,6 @@ spec:
     listKind: PrometheusList
     plural: prometheuses
     singular: prometheus
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -7025,7 +7017,6 @@ spec:
     listKind: PrometheusRuleList
     plural: prometheusrules
     singular: prometheusrule
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -7408,7 +7399,6 @@ spec:
     listKind: S2iBinaryList
     plural: s2ibinaries
     singular: s2ibinary
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -7491,7 +7481,6 @@ spec:
     shortNames:
     - s2ib
     singular: s2ibuilder
-  preserveUnknownFields: true
   scope: Namespaced
   subresources:
     status: {}
@@ -7960,7 +7949,6 @@ spec:
     shortNames:
     - s2ibt
     singular: s2ibuildertemplate
-  preserveUnknownFields: true
   scope: Cluster
   validation:
     openAPIV3Schema:
@@ -8094,7 +8082,6 @@ spec:
     shortNames:
     - s2ir
     singular: s2irun
-  preserveUnknownFields: true
   scope: Namespaced
   subresources:
     status: {}
@@ -8185,7 +8172,6 @@ spec:
     listKind: ServiceMonitorList
     plural: servicemonitors
     singular: servicemonitor
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -8499,7 +8485,6 @@ spec:
     listKind: ServicePolicyList
     plural: servicepolicies
     singular: servicepolicy
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -9346,7 +9331,6 @@ spec:
     listKind: StrategyList
     plural: strategies
     singular: strategy
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -10124,7 +10108,6 @@ spec:
     listKind: VirtualServiceList
     plural: virtualservices
     singular: virtualservice
-  preserveUnknownFields: true
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -10827,7 +10810,6 @@ spec:
     listKind: WorkspaceList
     plural: workspaces
     singular: workspace
-  preserveUnknownFields: true
   scope: Cluster
   validation:
     openAPIV3Schema:
