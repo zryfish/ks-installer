@@ -1,3 +1,12 @@
+# Workspaces
+---
+apiVersion: tenant.kubesphere.io/v1alpha1
+kind: Workspace
+metadata:
+  name: system-workspace
+spec:
+  manager: admin
+---
 # Namespaces
 ---
 apiVersion: v1
@@ -3234,6 +3243,28 @@ rules:
   verbs:
   - update
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus-k8s
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes/metrics
+  - nodes
+  - services
+  - endpoints
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- nonResourceURLs:
+  - /metrics
+  verbs:
+  - get
+---
 # Serviceaccounts
 ---
 apiVersion: v1
@@ -3283,6 +3314,13 @@ metadata:
   name: prometheus-operator
   namespace: kubesphere-monitoring-system
 ---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus-k8s
+  namespace: kubesphere-monitoring-system
+---
+
 # Roles
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -3522,7 +3560,19 @@ subjects:
   name: kubesphere-router
   namespace: kubesphere-controls-system
 ---
-
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus-k8s
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus-k8s
+subjects:
+- kind: ServiceAccount
+  name: prometheus-k8s
+  namespace: kubesphere-monitoring-system
+---
 # Rolebindings
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -4493,6 +4543,7 @@ spec:
         - --enable-multi-login=False
         - --token-idle-timeout=40m
         - --generate-kubeconfig=False
+        - --redis-url=redis://redis.kubesphere-system.svc:6379
         env:
         - name: KUBECTL_IMAGE
           value: kubesphere/kubectl:v1.0.0
@@ -5650,4 +5701,50 @@ spec:
   selector:
     k8s-app: prometheus-operator
   sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    prometheus: k8s-system
+  name: prometheus-k8s-system
+  namespace: kubesphere-monitoring-system
+spec:
+  clusterIP: None
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+    targetPort: web
+  selector:
+    app: prometheus
+    prometheus: k8s-system
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    prometheus: k8s
+  name: prometheus-k8s
+  namespace: kubesphere-monitoring-system
+spec:
+  clusterIP: None
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+    targetPort: web
+  selector:
+    app: prometheus
+    prometheus: k8s
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
   type: ClusterIP
