@@ -3570,7 +3570,6 @@ subjects:
   name: kubesphere-router
   namespace: kubesphere-controls-system
 ---
-
 # Secrets
 ---
 apiVersion: v1
