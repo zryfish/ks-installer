@@ -4815,10 +4815,6 @@ spec:
         operator: Exists
         tolerationSeconds: 60
       volumes:
-      - name: ca-dir
-        secret:
-          defaultMode: 420
-          secretName: kubesphere-ca
       - hostPath:
           path: /var/run/docker.sock
           type: ""
