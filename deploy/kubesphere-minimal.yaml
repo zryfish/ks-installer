@@ -11744,26 +11744,6 @@ spec:
     served: true
     storage: true
 ---
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    k8s-app: coredns
-  name: coredns
-  namespace: kubesphere-monitoring-system
-spec:
-  endpoints:
-  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
-    interval: 1m
-    port: metrics
-  jobLabel: k8s-app
-  namespaceSelector:
-    matchNames:
-    - kube-system
-  selector:
-    matchLabels:
-      k8s-app: coredns
----
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -14827,8 +14807,6 @@ spec:
           topologyKey: kubernetes.io/hostname
         weight: 100
   baseImage: kubesphere/prometheus
-  imagePullSecrets:
-  - name: qingcloud
   nodeSelector:
     beta.kubernetes.io/os: linux
   query:
@@ -14847,8 +14825,6 @@ spec:
       prometheus: k8s
       role: alert-rules
   scrapeInterval: 1m
-  secrets:
-  - kube-etcd-client-certs
   securityContext:
     fsGroup: 0
     runAsNonRoot: false
@@ -14861,7 +14837,7 @@ spec:
       operator: In
       values:
       - coredns
-      - apiserver
+      - kube-apiserver
       - prometheus
       - kube-scheduler
       - kube-controller-manager
