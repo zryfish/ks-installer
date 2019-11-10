@@ -11745,6 +11745,26 @@ spec:
     served: true
     storage: true
 ---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: coredns
+  name: coredns
+  namespace: kubesphere-monitoring-system
+spec:
+  endpoints:
+  - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 1m
+    port: metrics
+  jobLabel: k8s-app
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      k8s-app: coredns
+---
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
@@ -14460,8 +14480,6 @@ metadata:
   namespace: kubesphere-system
 type: Opaque
 ---
-
----
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -14843,7 +14861,6 @@ spec:
     - key: k8s-app
       operator: In
       values:
-      - etcd
       - coredns
       - apiserver
       - prometheus
@@ -16535,4 +16552,3 @@ spec:
     k8s-app: prometheus-operator
   sessionAffinity: None
   type: ClusterIP
----
