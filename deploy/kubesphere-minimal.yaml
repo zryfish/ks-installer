@@ -3946,7 +3946,6 @@ spec:
         resources:
           requests:
             storage: 20Gi
-        storageClassName: local
   tolerations:
   - effect: NoSchedule
     key: dedicated
@@ -4027,7 +4026,6 @@ spec:
         resources:
           requests:
             storage: 20Gi
-        storageClassName: local
   tolerations:
   - effect: NoSchedule
     key: dedicated
