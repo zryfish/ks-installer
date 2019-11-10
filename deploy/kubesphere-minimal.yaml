@@ -150,6 +150,7 @@ data:
 kind: ConfigMap
 metadata:
   name: caddyfile
+  namespace: kubesphere-system
 ---
 apiVersion: v1
 data:
@@ -179,6 +180,7 @@ data:
         openpitrix: v0.3.5
 kind: ConfigMap
 metadata:
+  namespace: kubesphere-system
   name: ks-console-config
 ---
 apiVersion: v1
@@ -281,6 +283,7 @@ data:
                 runAsNonRoot: false
 kind: ConfigMap
 metadata:
+  namespace: kubesphere-system
   name: ks-router-config
 ---
 apiVersion: v1
@@ -308,6 +311,7 @@ data:
 kind: ConfigMap
 metadata:
   name: kubesphere-config
+  namespace: kubesphere-system
 ---
 apiVersion: v1
 data:
@@ -2435,6 +2439,7 @@ data:
 kind: ConfigMap
 metadata:
   name: policy-rules
+  namespace: kubesphere-system
 ---
 apiVersion: v1
 data:
@@ -2813,14 +2818,7 @@ data:
 kind: ConfigMap
 metadata:
   name: sample-bookinfo
----
-apiVersion: v1
-data:
-  users.json: |
-    [{"username":"sonarqube","password":"sonarqube","cluster_role":"cluster-regular","hidden":true}]
-kind: ConfigMap
-metadata:
-  name: user-init
+  namespace: kubesphere-system
 ---
 
 # Clusterroles
@@ -4522,8 +4520,6 @@ spec:
             cpu: 20m
             memory: 100Mi
         volumeMounts:
-        - mountPath: /etc/ks-iam
-          name: user-init
         - mountPath: /etc/kubesphere/rules
           name: policy-rules
         - mountPath: /etc/kubesphere
@@ -4565,10 +4561,6 @@ spec:
           defaultMode: 420
           name: policy-rules
         name: policy-rules
-      - configMap:
-          defaultMode: 420
-          name: user-init
-        name: user-init
       - configMap:
           defaultMode: 420
           name: kubesphere-config
