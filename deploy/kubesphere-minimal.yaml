@@ -21,6 +21,7 @@ metadata:
   name: kubesphere-system
 
 # Configmaps
+---
 apiVersion: v1
 data:
   Caddyfile: |
