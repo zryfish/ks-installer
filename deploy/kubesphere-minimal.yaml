@@ -302,10 +302,6 @@ data:
       port: 6379
       password: ""
       db: 0
-
-
-
-
     monitoring:
       endpoint: http://prometheus-k8s.kubesphere-monitoring-system.svc:9090
       secondaryEndpoint: http://prometheus-k8s-system.kubesphere-monitoring-system.svc:9090
@@ -11513,14 +11509,9 @@ spec:
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  creationTimestamp: "2019-11-09T10:40:56Z"
-  generation: 1
   labels:
     controller-tools.k8s.io: "1.0"
   name: s2ibuildertemplates.devops.kubesphere.io
-  resourceVersion: "1219"
-  selfLink: /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/s2ibuildertemplates.devops.kubesphere.io
-  uid: 8b2a7421-a897-4676-87ec-14230b1995e0
 spec:
   additionalPrinterColumns:
   - JSONPath: .spec.codeFramework
@@ -11646,14 +11637,9 @@ spec:
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  creationTimestamp: "2019-11-09T10:40:56Z"
-  generation: 1
   labels:
     controller-tools.k8s.io: "1.0"
   name: s2iruns.devops.kubesphere.io
-  resourceVersion: "1220"
-  selfLink: /apis/apiextensions.k8s.io/v1beta1/customresourcedefinitions/s2iruns.devops.kubesphere.io
-  uid: b77a0b5b-8747-47f8-86f3-8ecc42b93970
 spec:
   additionalPrinterColumns:
   - JSONPath: .status.runState
