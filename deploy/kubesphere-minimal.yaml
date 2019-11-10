@@ -5748,3 +5748,58 @@ spec:
     clientIP:
       timeoutSeconds: 10800
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: kube-controller-manager
+  name: kube-controller-manager-headless
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+  - name: http-metrics
+    port: 10252
+    protocol: TCP
+    targetPort: 10252
+  selector:
+    component: kube-controller-manager
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: kube-scheduler
+  name: kube-scheduler-headless
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+  - name: http-metrics
+    port: 10251
+    protocol: TCP
+    targetPort: 10251
+  selector:
+    component: kube-scheduler
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: kubelet
+  name: kubelet
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+  - name: https-metrics
+    port: 10250
+    protocol: TCP
+    targetPort: 10250
+  sessionAffinity: None
+  type: ClusterIP
